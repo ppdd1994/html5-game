@@ -2,6 +2,9 @@ var can1,can2,ctx1,ctx2,cw,mx,my,ch,ane,fruit,mom,baby;
 var lastTime = new Date();
 var dl = 0;
 var bgimg = new Image();
+var babyTail = [];
+var babyEye = [];
+var babyBody = [];
 document.body.onload = game;
 
 function game(){
@@ -18,6 +21,21 @@ function init(){
     ch = can1.height;
     can1.addEventListener('mousemove',onMouseMove,false);
     bgimg.src = "src/background.jpg";
+
+    for (var i = 0; i < 8; i++) {
+    	babyTail[i] = new Image();
+    	babyTail[i].src = "./src/babyTail"+i+".png";
+    };
+    for (var i = 0; i < 2; i++) {
+    	babyEye[i] = new Image();
+    	babyEye[i].src = "./src/babyEye"+i+".png";
+    };
+    for (var i = 0; i < 20; i++) {
+    	babyBody[i] = new Image();
+    	babyBody[i].src = "./src/babyFade"+i+".png";
+    };
+
+
     ane = new aneobj();
     ane.init();
     fruit = new fruitobj();
@@ -26,6 +44,7 @@ function init(){
     mom.init();
     baby = new babyobj();
     baby.init();
+    
 }
 
 function gameloop(){
