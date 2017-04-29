@@ -26,8 +26,8 @@ momobj.prototype.draw = function(){
     ctx1.save();
     ctx1.translate(this.x,this.y);
     ctx1.rotate(this.angle);
-    ctx1.drawImage(this.bigEyes,-this.bigEyes.width*0.5,-this.bigEyes.height*0.5,this.bigEyes.width,this.bigEyes.height);
-    ctx1.drawImage(this.bigBody,-this.bigBody.width*0.5,-this.bigBody.height*0.5,this.bigBody.width,this.bigBody.height);
     ctx1.drawImage(this.bigTail,-this.bigTail.width*0.5+30,-this.bigTail.height*0.5,this.bigTail.width,this.bigTail.height);
+    ctx1.drawImage(this.bigBody,-this.bigBody.width*0.5,-this.bigBody.height*0.5,this.bigBody.width,this.bigBody.height);
+    ctx1.drawImage(this.bigEyes,-this.bigEyes.width*0.5,-this.bigEyes.height*0.5,this.bigEyes.width,this.bigEyes.height);
     ctx1.restore();
 }

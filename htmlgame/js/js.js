@@ -1,4 +1,4 @@
-var can1,can2,ctx1,ctx2,cw,mx,my,ch,ane,fruit,mom;
+var can1,can2,ctx1,ctx2,cw,mx,my,ch,ane,fruit,mom,baby;
 var lastTime = new Date();
 var dl = 0;
 var bgimg = new Image();
@@ -24,12 +24,17 @@ function init(){
     fruit.init();
     mom = new momobj();
     mom.init();
+    baby = new babyobj();
+    baby.init();
 }
 
 function gameloop(){
 	window.requestAnimFrame(gameloop);
 	var now = new Date();
 	dl = now - lastTime;
+	if (dl>45) {
+		dl = 45;
+	};
 	lastTime = now;
 	drawbg();
 	ane.draw();
@@ -37,6 +42,8 @@ function gameloop(){
 	fruit.draw();
 	ctx1.clearRect(0,0,cw,ch);
 	mom.draw();
+	baby.draw();
+	collision();
 }
 function onMouseMove(e){
     mx = e.offSetX || e.layerX;

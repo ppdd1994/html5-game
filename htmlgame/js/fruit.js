@@ -50,6 +50,9 @@ fruitobj.prototype.born = function(i){
   this.speed[i] = Math.random()*0.017+0.1;
   this.alive[i] = true;
 }
+fruitobj.prototype.dead = function(i){
+  this.alive[i] = false;
+}
  function fruitMonitor(){
    var num = 0;
    for (var i = 0; i < fruit.num; i++) {
