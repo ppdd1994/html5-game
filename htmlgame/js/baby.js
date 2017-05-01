@@ -49,12 +49,13 @@ babyobj.prototype.draw = function(){
     };
 
     this.bodyTime += dl;
-    if (this.bodyTime > 500) {
+    if (this.bodyTime > 300) {
     	this.babyBodyCount = this.babyBodyCount + 1 ;
-    	this.bodyTime %= 500 ;
+    	this.bodyTime %= 300 ;
     	if (this.babyBodyCount > 19) {
     		//game over
-    		this.babyBodyCount = 19
+    		this.babyBodyCount = 19;
+            data.gameOver = true;
     	};
     };
 

@@ -5,6 +5,15 @@ var momobj = function () {
 	this.bigEyes = new Image();
 	this.bigBody = new Image();
 	this.bigTail = new Image();
+
+	this.tailTime = 0;
+	this.tailCount = 0;
+
+	this.eyeTime = 0;
+	this.eyeCount = 0;
+	this.eyeInterval = 1000;
+
+	this.bodyCount = 0;
 }
 momobj.prototype.init = function(){
     this.bigEyes.src = "src/bigEye0.png";
@@ -23,11 +32,40 @@ momobj.prototype.draw = function(){
 		this.x = lerpDistance(mx, this.x, 0.9);
 		this.y = lerpDistance(my, this.y, 0.9);
 	};
+
+	this.tailTime += dl;
+	if (this.tailTime > 50) {
+		this.tailCount = (this.tailCount+1)%8;
+		this.tailTime %=50;
+	};
+    
+    this.eyeTime +=dl;
+    if (this.eyeTime > this.eyeInterval) {
+      this.eyeCount = (this.eyeCount + 1)%2;
+      this.eyeTime %= this.eyeInterval;
+      if (this.eyeCount == 0) {
+      	this.eyeInterval = Math.random()*1000+2000;
+      }else{
+        this.eyeInterval = 200;
+      }
+    };
+
+    
+   
     ctx1.save();
     ctx1.translate(this.x,this.y);
     ctx1.rotate(this.angle);
-    ctx1.drawImage(this.bigTail,-this.bigTail.width*0.5+30,-this.bigTail.height*0.5,this.bigTail.width,this.bigTail.height);
-    ctx1.drawImage(this.bigBody,-this.bigBody.width*0.5,-this.bigBody.height*0.5,this.bigBody.width,this.bigBody.height);
-    ctx1.drawImage(this.bigEyes,-this.bigEyes.width*0.5,-this.bigEyes.height*0.5,this.bigEyes.width,this.bigEyes.height);
+
+    var tailCount = this.tailCount;
+    var eyeCount = this.eyeCount;
+    var bodyCount = this.bodyCount;
+    ctx1.drawImage(momTail[tailCount],-momTail[tailCount].width*0.5+30,-momTail[tailCount].height*0.5,momTail[tailCount].width,momTail[tailCount].height);
+    if (data.double == 1) {
+      ctx1.drawImage(momBodyOri[bodyCount],-momBodyOri[bodyCount].width*0.5,-momBodyOri[bodyCount].height*0.5,momBodyOri[bodyCount].width,momBodyOri[bodyCount].height);
+    }else{
+      ctx1.drawImage(momBodyBlu[bodyCount],-momBodyBlu[bodyCount].width*0.5,-momBodyBlu[bodyCount].height*0.5,momBodyBlu[bodyCount].width,momBodyBlu[bodyCount].height);
+    
+    };
+    ctx1.drawImage(momEye[eyeCount],-momEye[eyeCount].width*0.5,-momEye[eyeCount].height*0.5,momEye[eyeCount].width,momEye[eyeCount].height);
     ctx1.restore();
 }

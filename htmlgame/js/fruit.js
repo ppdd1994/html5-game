@@ -17,7 +17,13 @@ fruitobj.prototype.init = function(){
   	this.alive[i] = false;
   	this.x[i] = 0;
   	this.y[i] = 0;
-  	this.type[i] = Math.random();
+    var typenum = Math.random();
+    if(typenum>0.17){
+      this.type[i] = 'oringe';
+    }else{
+      this.type[i] = 'blue';
+    }
+  	
   };
 
 }
@@ -29,7 +35,7 @@ fruitobj.prototype.draw = function(){
 	        }else{
 	        	this.y[i] -= this.speed[i]*dl;
 	        }
-	        if(this.type[i]>0.17){
+	        if(this.type[i] == "oringe"){
 	        	ctx2.drawImage(this.oringe,this.x[i]-this.l[i]*0.5,this.y[i]-this.l[i]*0.5,this.l[i],this.l[i]);
 	        }else{
 	        	ctx2.drawImage(this.blue,this.x[i]-this.l[i]*0.5,this.y[i]-this.l[i]*0.5,this.l[i],this.l[i]);	
