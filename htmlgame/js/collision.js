@@ -8,6 +8,7 @@ function momfruitCollision () {
 			var l = calLength2(fruit.x[i], fruit.y[i], mom.x, mom.y);
 			if(l<900){
 				fruit.dead(i);
+
 				if (fruit.type[i] == "blue") {
 				    data.double = 2;
 			    };
@@ -16,6 +17,7 @@ function momfruitCollision () {
 				if (mom.bodyCount > 7 ) {
 					mom.bodyCount = 7;
 				};
+				wave.born(fruit.x[i], fruit.y[i],0);
 			}
 		};
 		
@@ -30,9 +32,11 @@ function mombabyCollision(){
 	var l = calLength2(mom.x,mom.y,baby.x,baby.y);
 	if (l < 900) {
 		if (data.fruitnum > 0) {
+			wave.born(mom.x,mom.y,1);
 			data.addscore();
-		baby.babyBodyCount = 0;
-		mom.bodyCount = 0;
+		    baby.babyBodyCount = 0;
+		    mom.bodyCount = 0;
+
 	};
 		
 	};

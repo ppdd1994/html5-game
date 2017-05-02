@@ -66,6 +66,8 @@ function init(){
     baby = new babyobj();
     baby.init();
     data = new dataobj();
+    wave = new waveobj();
+    wave.init();
     
 }
 
@@ -87,6 +89,7 @@ function gameloop(){
 	momfruitCollision();
 	mombabyCollision();
 	data.draw();
+	wave.draw();
 }
 function onMouseMove(e){
     mx = e.offSetX || e.layerX;

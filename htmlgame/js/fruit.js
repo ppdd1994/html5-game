@@ -48,6 +48,7 @@ fruitobj.prototype.draw = function(){
         
 	};
 }
+
 fruitobj.prototype.born = function(i){
   var aneId = Math.floor(Math.random()*35);
   this.x[i] = ane.x[aneId];
@@ -56,6 +57,7 @@ fruitobj.prototype.born = function(i){
   this.speed[i] = Math.random()*0.017+0.1;
   this.alive[i] = true;
 }
+
 fruitobj.prototype.dead = function(i){
   this.alive[i] = false;
 }

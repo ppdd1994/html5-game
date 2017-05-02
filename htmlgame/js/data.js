@@ -30,7 +30,8 @@ dataobj.prototype.draw = function(){
 	ctx1.restore()
 }
 dataobj.prototype.addscore = function(){
-	this.score += this.fruitnum*10 * this.double;
+	this.score += this.fruitnum * this.double;
+	this.reset();
 }
 
   
