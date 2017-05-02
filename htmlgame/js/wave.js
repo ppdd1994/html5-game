@@ -22,7 +22,6 @@ waveobj.prototype.draw = function(){
             	this.r[i] = this.r[i] + dl*0.05;
 				if (this.r[i] > 30) {
 					this.dead(i);	
-					console.log("draw");	
 				};
 				var alpha = 1 - this.r[i]/30; 
 				ctx1.beginPath();

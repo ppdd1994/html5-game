@@ -51,8 +51,8 @@ fruitobj.prototype.draw = function(){
 
 fruitobj.prototype.born = function(i){
   var aneId = Math.floor(Math.random()*35);
-  this.x[i] = ane.x[aneId];
-  this.y[i] = ch-ane.len[aneId];
+  this.x[i] = ane.rootx[aneId];
+  this.y[i] = ane.heady[aneId];
   this.l[i] = 0;
   this.speed[i] = Math.random()*0.017+0.1;
   this.alive[i] = true;
